@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  rootApp:
+    container_name: micro-fe-1
+    image: micro-fe-1
+    restart: "no"
+    build:
+      context: ./
+      dockerfile: ./docker/dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+      - 8081:8081
+    environment:
+      - PORT=8081
+    networks:
+      - frontend-1
+    tty: true
+
+networks:
+  frontend-1:
+    external: true
