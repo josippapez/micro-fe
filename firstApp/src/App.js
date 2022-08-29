@@ -10,7 +10,7 @@ const App = () => {
 
   const handleFetch = async () => {
     const response = await fetch(
-      "https://jsonplaceholder.typicode.com/posts"
+      `${process.env.REACT_APP_REMOTE_BE_URL}/random`
     ).then(res => {
       return res.json();
     });
@@ -31,12 +31,7 @@ const App = () => {
         }}
       >
         {fetchedData.map(item => (
-          <div key={item.id} style={{
-            padding: '20px'
-          }}>
-            {item.title}
-            <div>{item.body}</div>
-          </div>
+          <div key={item.id}>{item.name}</div>
         ))}
       </div>
     </div>

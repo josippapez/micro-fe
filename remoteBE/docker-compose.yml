@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  remote_app_be:
+    container_name: remote_app_be
+    image: remote_app_be
+    restart: "no"
+    build:
+      context: ./
+      dockerfile: ./docker/dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+     - 8000:8000
+    environment:
+      - PORT=8000
+    tty: true

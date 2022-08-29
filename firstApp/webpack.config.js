@@ -11,6 +11,7 @@ const {
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const dotenv = require("dotenv");
+const Dotenv = require("dotenv-webpack");
 
 const devMode = process.env.REACT_APP_NODE_ENV !== "production";
 
@@ -73,6 +74,9 @@ module.exports = () => {
       ],
     },
     plugins: [
+      new Dotenv({
+        path: path.resolve(__dirname, ".env." + process.env.REACT_APP_NODE_ENV),
+      }),
       new ModuleFederationPlugin({
         name: "app",
         filename: "remoteEntry.js",

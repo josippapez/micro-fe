@@ -1,0 +1,8 @@
+FROM node:16-bullseye
+
+USER node
+WORKDIR /app
+
+EXPOSE 8000
+
+CMD node app.js
