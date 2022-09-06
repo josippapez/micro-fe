@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import "./App.css";
+import styles from "./App.module.css";
 
 const App = () => {
   const state = useSelector(state => state);
@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       First app, {state.counter.counter}
       <button onClick={() => handleFetch()}>Fetch</button>
       <div

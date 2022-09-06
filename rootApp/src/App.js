@@ -1,10 +1,8 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
+import styles from "./App.module.css";
 import isMobileView from "./checkForMobileView";
-import NewComponent from "./Components/NewComponent";
 import useCalculateEachDayOfMonth from "./Hooks/calculateEachDayOfMonth";
-import logo from "./logo.svg";
 import { decreaseCounter, increaseCounter } from "./store/reducers/counter";
 import {
   decreaseCount,
@@ -31,32 +29,18 @@ function RootApp() {
     }
   };
 
-  // useEffect(() => {
-  //   if (navigate && navigate.id) {
-  //     getEventsById(navigate.id);
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    if (navigate && navigate.id) {
+      getEventsById(navigate.id);
+    }
+  }, [navigate]);
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Suspense fallback={<div>Loading...</div>}>
         <ComponentFromSecondApp />
       </Suspense>
-      <NewComponent />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          data-testid="app-link"
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className={styles["App-header"]}>
         <div>{counter}</div>
         <button
           data-testid="increase-counter"
